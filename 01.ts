@@ -74,7 +74,8 @@ for (let i = 0; i < M; i++) {
   const width = X_SCALE * h;
   const height = Y_SCALE * heightRaw;
   const y = Y_HEIGHT - 20 - height;
-  console.info(x, y, width, height);
   context.rect(x, y, width, height);
   context.fill();
 }
+
+log(`Горизотальный масштаб = x${X_SCALE}, вертикальный = x${Y_SCALE}`);
