@@ -1,4 +1,4 @@
-import { getNormalSet, getEstimateMean, getEstimateD } from "./lib";
+import { getNormalSet, getEstimateMean, getEstimateD, log } from "./lib";
 
 const canvas = document.getElementById("canvas") as HTMLCanvasElement;
 
