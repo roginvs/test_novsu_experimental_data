@@ -1,14 +1,6 @@
 import { getNormalSet, getEstimateMean, getEstimateD } from "./lib";
 
-const logDiv = document.getElementById("log") as HTMLDivElement;
-
 const canvas = document.getElementById("canvas") as HTMLCanvasElement;
-
-function log(s: string) {
-  const line = document.createElement("div");
-  line.innerHTML = s;
-  logDiv.appendChild(line);
-}
 
 const n = 20;
 const mySelection = getNormalSet(n).map((x) => Math.round(x * 10) + 30);

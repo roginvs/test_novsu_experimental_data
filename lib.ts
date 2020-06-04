@@ -41,3 +41,11 @@ export function getNormalSet(n: number) {
   }
   return selection;
 }
+
+export function log(s: string) {
+  const logDiv = document.getElementById("log") as HTMLDivElement;
+
+  const line = document.createElement("div");
+  line.innerHTML = s;
+  logDiv.appendChild(line);
+}
