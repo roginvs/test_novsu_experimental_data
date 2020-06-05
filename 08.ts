@@ -66,7 +66,7 @@ for (const alpha of [0.1, 0.05, 0.01]) {
 
   const Da = (n * selectionD) / z1;
   const Db = (n * selectionD) / z2;
-  log(`    ВНИМАНИЕ: Еспользуется N вместо N-1`);
+  log(`    ВНИМАНИЕ: Используется N вместо N-1`);
   log(`    Интервал = [${Da.toFixed(2)}..${Db.toFixed(2)}]`);
 
   log(nbsp);
