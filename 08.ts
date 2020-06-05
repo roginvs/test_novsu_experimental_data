@@ -6,9 +6,7 @@ const DIST_SIGMA = 4;
 const DIST_A = 50;
 
 log(`Выборка из N[${DIST_A}, ${DIST_SIGMA}²]`);
-
-const n = 20;
-const mySelection = getNormalSet(n).map((x) =>
+const mySelection = getNormalSet(20).map((x) =>
   Math.round(x * DIST_SIGMA + DIST_A)
 );
 
@@ -20,8 +18,9 @@ const mySelection = [
   ...new Array(15).fill(2),
   ...new Array(5).fill(3),
 ];
-const n = mySelection.length;
 */
+
+const n = mySelection.length;
 
 mySelection.sort((a, b) => a - b);
 log(`Выборка из n=${n} элементов:`);
@@ -73,5 +72,3 @@ for (const alpha of [0.1, 0.05, 0.01]) {
 
   log(nbsp);
 }
-
-log(`${student(4, 1 - 0.8 / 2)}`);
