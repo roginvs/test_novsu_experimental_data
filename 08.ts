@@ -1,5 +1,6 @@
 import { getNormalSet, getEstimateMean, getEstimateD, log, nbsp } from "./lib";
-import { icdf, cdf } from "norm-dist";
+// import { icdf as icdf2 } from "norm-dist";
+import * as jsstats from "js-stats";
 
 const n = 20;
 
@@ -20,6 +21,12 @@ const selectionD = getEstimateD(mySelection, selectionMean, n);
 log(`Среднее = ${selectionMean}`);
 
 log(nbsp);
+
+function icdf(n: number): number {
+  const normalDistribution = new jsstats.NormalDistribution(0, 1);
+  return normalDistribution.invCumulativeProbability(n);
+}
+
 log("При известной дисперсии:");
 for (const alpha of [0.1, 0.05, 0.01]) {
   log(`  𝛼=${alpha}`);
@@ -28,6 +35,7 @@ for (const alpha of [0.1, 0.05, 0.01]) {
   const u: number = icdf(u_a_input);
   log(`    1-𝛼/a = ${u_a_input}`);
   log(`    u(1-𝛼/2)=${u}`);
+  //log(`    u(1-𝛼/2)=${icdf2(u_a_input)}`);
 
   const err = (u * DIST_SIGMA) / Math.sqrt(n);
 
