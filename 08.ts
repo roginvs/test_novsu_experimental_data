@@ -46,7 +46,7 @@ function student(degreesOfFreedom: number, probabilty: number) {
 
 log("");
 for (const alpha of [0.1, 0.05, 0.01]) {
-  log(`𝛼=${alpha}`);
+  log(`𝛼=${alpha} (${((1 - alpha) * 100).toFixed(2)}%)`);
   log(`  При известной дисперсии`);
 
   const u_a_input = 1 - alpha / 2;
