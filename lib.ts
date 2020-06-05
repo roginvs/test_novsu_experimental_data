@@ -49,3 +49,5 @@ export function log(s: string) {
   line.innerHTML = s;
   logDiv.appendChild(line);
 }
+
+export const nbsp = "\xa0";
