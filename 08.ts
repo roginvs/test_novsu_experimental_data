@@ -4,7 +4,7 @@ import { inv_standart_deviation, inv_student, inv_chi_square } from "./stat";
 const DIST_SIGMA = 4;
 const DIST_A = 50;
 
-log(`Выборка из N[${DIST_A}, ${DIST_SIGMA}²]`);
+log(`Используем распределение N[${DIST_A}, ${DIST_SIGMA}²]`);
 const mySelection = getNormalSet(20).map((x) =>
   Math.round(x * DIST_SIGMA + DIST_A)
 );
