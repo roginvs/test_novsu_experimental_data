@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "inv-chisquare-cdf": "^1.0.1",
     "js-stats": "^1.0.5",
     "parcel-bundler": "^1.12.4",
     "typescript": "^3.9.3"
