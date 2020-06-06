@@ -31,7 +31,7 @@ const selectionS = Math.sqrt(selectionD);
 log(`Среднее выборки = ${selectionMean}`);
 log(`S² = ${selectionD}, S=${selectionS}`);
 
-log(nbsp);
+log("");
 
 log("");
 for (const alpha of [0.1, 0.05, 0.01]) {
