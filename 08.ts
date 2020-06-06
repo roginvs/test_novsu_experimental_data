@@ -1,4 +1,4 @@
-import { getNormalSet, getEstimateMean, getEstimateD, log, nbsp } from "./lib";
+import { getNormalSet, getEstimateMean, getEstimateD, log } from "./lib";
 import { inv_standart_deviation, inv_student, inv_chi_square } from "./stat";
 
 const DIST_SIGMA = 4;
@@ -69,5 +69,5 @@ for (const alpha of [0.1, 0.05, 0.01]) {
   log(`    ВНИМАНИЕ: Используется N вместо N-1`);
   log(`    Интервал = [${Da.toFixed(2)}..${Db.toFixed(2)}]`);
 
-  log(nbsp);
+  log("");
 }

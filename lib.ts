@@ -42,12 +42,12 @@ export function getNormalSet(n: number) {
   return selection;
 }
 
+const nbsp = "\xa0";
+
 export function log(s: string) {
   const logDiv = document.getElementById("log") as HTMLDivElement;
 
   const line = document.createElement("div");
-  line.innerHTML = s;
+  line.innerHTML = s || nbsp;
   logDiv.appendChild(line);
 }
-
-export const nbsp = "\xa0";
