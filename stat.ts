@@ -29,6 +29,7 @@ export function inv_chi_square(
 }
 
 export function chi_square(degreesOfFreedom: number, value: number): number {
+  // js-stats version gives wrong data
   return js_chi_square(degreesOfFreedom, value);
 }
 
