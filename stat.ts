@@ -73,4 +73,11 @@ assert(inv_student(10, 0.75), 0.7);
 assert(inv_student(10, 0.995), 3.169);
 assert(inv_student(20, 0.95), 1.725);
 assert(inv_student(15, 0.95), 1.753);
+
+console.info(`Self-testing inv_standart_deviation...`);
+assert(inv_standart_deviation(0.9), 1.282);
+assert(inv_standart_deviation(0.95), 1.645);
+assert(inv_standart_deviation(0.99), 2.326, 1);
+assert(inv_standart_deviation(0.999), 3.09, 1);
+
 console.info(`Self-test is done`);
