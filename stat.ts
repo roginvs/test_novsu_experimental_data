@@ -1,6 +1,11 @@
 import * as jsstats from "js-stats";
 import { invChiSquareCDF } from "inv-chisquare-cdf";
 
+export function std_cumulative_distribution(n: number): number {
+  const normalDistribution = new jsstats.NormalDistribution(0, 1);
+  return normalDistribution.cumulativeProbability(n);
+}
+
 export function inv_standart_deviation(n: number): number {
   const normalDistribution = new jsstats.NormalDistribution(0, 1);
   return normalDistribution.invCumulativeProbability(n);

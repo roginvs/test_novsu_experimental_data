@@ -1,1 +1,1 @@
-console.info("kek");
+import { stdcdf } from "./stat";
