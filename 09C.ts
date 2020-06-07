@@ -11,7 +11,6 @@ function validate_set(
   providedStddev?: number
 ) {
   const n = data.length;
-  log(`  Выборка из n=${n} элементов`);
 
   let mean: number;
   let stddev: number;
@@ -79,16 +78,16 @@ function validate_set(
       100
     ).toFixed(4)}%`
   );
-
-  log("");
 }
 
 const DIST_SIGMA = 4;
 const DIST_A = 50;
 
-log(`Выборка из случайного распередения N[${DIST_A}, ${DIST_SIGMA}²]`);
-
 for (const n of [20, 100]) {
+  log(
+    `Выборка из случайного распередения N[${DIST_A}, ${DIST_SIGMA}²] из n=${n} элементов`
+  );
+
   const mySelection = getNormalSet(n).map((x) =>
     Math.round(x * DIST_SIGMA + DIST_A)
   );
@@ -96,4 +95,17 @@ for (const n of [20, 100]) {
   validate_set(mySelection, DIST_A, DIST_SIGMA);
   log(`При неизвестных α и σ`);
   validate_set(mySelection);
+
+  log("");
 }
+
+const equalSet = [
+  ...new Array(40).fill(10),
+  ...new Array(40).fill(11),
+  ...new Array(40).fill(12),
+  ...new Array(40).fill(13),
+  ...new Array(40).fill(14),
+  ...new Array(40).fill(15),
+];
+log(`Выборка из равномерного распределения n=${equalSet.length}`);
+validate_set(equalSet);
