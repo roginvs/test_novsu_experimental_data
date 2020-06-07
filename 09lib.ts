@@ -41,7 +41,9 @@ export function doChiSquare(
   let tmpHealthCheck = 0;
   observedRanges.forEach((r) => (tmpHealthCheck += r));
   if (tmpHealthCheck !== n) {
-    log("  ВНУТРЕННАЯ ОШИБКА");
+    log(` ВНУТРЕННАЯ ОШИБКА o=${tmpHealthCheck} n=${n}`);
+    console.info(mySelection);
+    throw new Error();
   }
 
   const expectedProbability = new Array(M).fill(0).map((_, idx) => {
@@ -69,5 +71,5 @@ export function doChiSquare(
       log(`      δ > τ, гипотеза отвергается`);
     }
   }
-  log("");
+  //log("");
 }
