@@ -1,5 +1,6 @@
 import * as jsstats from "js-stats";
 import { invChiSquareCDF } from "inv-chisquare-cdf";
+import { js_chi_square } from "./stat.chi_square";
 
 export function std_cumulative_distribution(n: number): number {
   const normalDistribution = new jsstats.NormalDistribution(0, 1);
@@ -28,14 +29,9 @@ export function inv_chi_square(
 }
 
 export function chi_square(degreesOfFreedom: number, value: number): number {
-  const cs_distribution = new jsstats.ChiSquareDistribution(
-    degreesOfFreedom - 1
-  );
-  const probability = cs_distribution.cumulativeProbability(value);
-  return probability;
+  return js_chi_square(degreesOfFreedom, value);
 }
 
-const epsilon = 0.01;
 function assert(x1: number, x2: number, errDigits = 3) {
   const digits = 10 ** errDigits;
   if (Math.round(x1 * digits) != Math.round(x2 * digits)) {
@@ -60,13 +56,11 @@ assert(inv_chi_square(20, 0.3), 16.3, 1);
 assert(inv_chi_square(6, 0.99), 16.8, 1);
 assert(inv_chi_square(4 - 1, 0.95), 7.81, 1);
 
-/*
 console.info(`Self-testing chi_square...`);
 assert(chi_square(10, 18.3), 0.95);
-assert(chi_square(20, 16.3), 0.3);
+assert(chi_square(20, 16.3), 0.3, 2);
 assert(chi_square(6, 16.8), 0.99);
 assert(chi_square(4 - 1, 7.81), 0.95);
-*/
 
 console.info(`Self-testing int_student...`);
 assert(inv_student(10, 0.75), 0.7);
