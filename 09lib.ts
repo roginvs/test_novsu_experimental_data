@@ -64,7 +64,7 @@ export function doChiSquare(
   }
   delta *= n;
   log(`  δ=${delta}`);
-  const probability = chi_square(n - 1, delta);
+  const probability = chi_square(M - 1, delta);
   log(
     `    Вероятность ошибки при отвергнутой гипотезе = ${(
       (1 - probability) *

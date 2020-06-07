@@ -19,7 +19,7 @@ function doEqual(useDistortion: boolean) {
       .map(() => Math.random() * (b - a) + a);
 
     if (useDistortion) {
-      for (let i = 0; i < n / 2; i++) {
+      for (let i = 0; i < n / 5; i++) {
         mySelection[i] = (b - a) / 2 + a;
       }
     }
