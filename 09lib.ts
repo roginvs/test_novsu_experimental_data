@@ -1,5 +1,5 @@
 import { log } from "./lib";
-import { inv_chi_square } from "./stat";
+import { inv_chi_square, chi_square } from "./stat";
 
 export function doChiSquare(
   n: number,
@@ -64,9 +64,16 @@ export function doChiSquare(
   }
   delta *= n;
   log(`  δ=${delta}`);
+  const probability = chi_square(n - 1, delta);
+  log(
+    `    Вероятность ошибки при отвергнутой гипотезе = ${(
+      (1 - probability) *
+      100
+    ).toFixed(4)}%`
+  );
 
   for (const alpha of [0.1, 0.05, 0.01]) {
-    log(`    α=${alpha}`);
+    log(`    α=${alpha} (${alpha * 100}%)`);
     const tau = inv_chi_square(n - 1, 1 - alpha);
     log(`      τ(n-1,1-α)=${tau.toFixed(2)}`);
     if (delta <= tau) {

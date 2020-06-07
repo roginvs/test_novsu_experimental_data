@@ -26,3 +26,9 @@ export function inv_chi_square(
   const val = invChiSquareCDF(probabilty, degreesOfFreedom);
   return val;
 }
+
+export function chi_square(degreesOfFreedom: number, value: number): number {
+  const cs_distribution = new jsstats.ChiSquareDistribution(degreesOfFreedom);
+  const probability = cs_distribution.cumulativeProbability(value);
+  return probability;
+}
