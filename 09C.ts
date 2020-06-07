@@ -3,7 +3,7 @@ import {
   inv_chi_square,
   std_cumulative_distribution,
 } from "./stat";
-import { log, getEstimateMean, getEstimateD } from "./lib";
+import { log, getEstimateMean, getEstimateD, getNormalSet } from "./lib";
 
 function validate_set(
   data: number[],
@@ -14,21 +14,21 @@ function validate_set(
   log(`  Выборка из n=${n} элементов`);
 
   let mean: number;
-  let stddev;
+  let stddev: number;
   if (providedMean !== undefined) {
     mean = providedMean;
     log(`  M=${mean.toFixed(2)}`);
   } else {
     mean = getEstimateMean(data, n);
     log(`  Оценка M=${mean.toFixed(2)}`);
-    if (providedStddev) {
-      stddev = providedStddev;
-      log(`  stddev=${stddev.toFixed(2)}`);
-    } else {
-      const estimatedD = getEstimateD(data, mean, n);
-      stddev = Math.sqrt(estimatedD);
-      log(`  Оценка D=${estimatedD.toFixed(2)} stddev=${stddev.toFixed(2)}`);
-    }
+  }
+  if (providedStddev) {
+    stddev = providedStddev;
+    log(`  stddev=${stddev.toFixed(2)}`);
+  } else {
+    const estimatedD = getEstimateD(data, mean, n);
+    stddev = Math.sqrt(estimatedD);
+    log(`  Оценка D=${estimatedD.toFixed(2)} stddev=${stddev.toFixed(2)}`);
   }
 
   data.sort();
@@ -83,30 +83,17 @@ function validate_set(
   log("");
 }
 
-//validate_set([1, 2, 3, 4, 5, 2, 3, 4]);
-validate_set([
-  1,
-  2,
-  3,
-  4,
-  5,
-  6,
-  7,
-  8,
-  9,
-  10,
-  5,
-  5,
-  5,
-  6,
-  6,
-  6,
-  4,
-  4,
-  7,
-  7,
-  3,
-  8,
-]);
+const DIST_SIGMA = 4;
+const DIST_A = 50;
 
-validate_set([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]);
+log(`Выборка из случайного распередения N[${DIST_A}, ${DIST_SIGMA}²]`);
+
+for (const n of [20, 100]) {
+  const mySelection = getNormalSet(n).map((x) =>
+    Math.round(x * DIST_SIGMA + DIST_A)
+  );
+  log(`При известных α и σ`);
+  validate_set(mySelection, DIST_A, DIST_SIGMA);
+  log(`При неизвестных α и σ`);
+  validate_set(mySelection);
+}
