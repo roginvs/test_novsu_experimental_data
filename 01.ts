@@ -80,7 +80,7 @@ for (let i = 0; i < M; i++) {
 
 for (let i = 0; i <= M; i++) {
   const pos = min + h * i;
-  context.strokeText(`${pos}`, pos * X_SCALE, Y_HEIGHT);
+  context.strokeText(`${pos.toFixed(2)}`, pos * X_SCALE, Y_HEIGHT);
 }
 
 log(`Горизотальный масштаб = x${X_SCALE}, вертикальный = x${Y_SCALE}`);
