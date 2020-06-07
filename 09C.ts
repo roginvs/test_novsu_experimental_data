@@ -78,6 +78,17 @@ function validate_set(
       100
     ).toFixed(4)}%`
   );
+
+  for (const alpha of [0.1, 0.05, 0.01]) {
+    log(`    α=${alpha} (${alpha * 100}%)`);
+    const tau = inv_chi_square(M - 1, 1 - alpha);
+    log(`      τ(M-1,1-α)=${tau.toFixed(2)}`);
+    if (delta <= tau) {
+      log(`      δ ≤ τ, гипотеза не отвергается`);
+    } else {
+      log(`      δ > τ, гипотеза отвергается`);
+    }
+  }
 }
 
 const DIST_SIGMA = 4;
