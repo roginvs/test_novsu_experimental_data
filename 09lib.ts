@@ -76,7 +76,6 @@ export function doChiSquare(
     log(`    α=${alpha} (${alpha * 100}%)`);
     const tau = inv_chi_square(M - 1, 1 - alpha);
     log(`      τ(M-1,1-α)=${tau.toFixed(2)}`);
-    log(`      xxx=${chi_square(M - 1, tau)}`);
     if (delta <= tau) {
       log(`      δ ≤ τ, гипотеза не отвергается`);
     } else {
