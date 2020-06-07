@@ -26,13 +26,17 @@ export function doChiSquare(
   let currentPos = 0;
   for (let currentRange = 0; currentRange < M; currentRange++) {
     const to = min + h * (currentRange + 1);
+
     let count = 0;
     while (currentPos < n && mySelection[currentPos] < to) {
       currentPos++;
       count++;
     }
+
     if (currentRange === M - 1) {
-      count += 1;
+      if (to <= max) {
+        count += 1;
+      }
     }
 
     observedRanges[currentRange] = count;

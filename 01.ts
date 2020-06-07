@@ -60,7 +60,9 @@ for (let i = 0; i < M; i++) {
     count++;
   }
   if (i === M - 1) {
-    count += 1;
+    if (to <= max) {
+      count += 1;
+    }
   }
 
   const heightRaw = count / (n * h);
