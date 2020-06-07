@@ -1,4 +1,4 @@
-import { stdcdf } from "./stat";
+import { chi_square, inv_chi_square } from "./stat";
 import { log, getEstimateMean, getEstimateD } from "./lib";
 
 function validate_set(data: number[]) {
@@ -16,4 +16,7 @@ function validate_set(data: number[]) {
   const observedValuesCount = new Array(6);
 }
 
-validate_set([1, 2, 3, 4, 5, 2, 3, 4]);
+//validate_set([1, 2, 3, 4, 5, 2, 3, 4]);
+
+console.info(inv_chi_square(10, 1 - 0.05));
+console.info(chi_square(10, 18.3));
