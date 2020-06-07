@@ -30,9 +30,7 @@ function doEqual(useDistortion: boolean) {
   log("");
 }
 
-function doExponental() {
-  const lambda = 0.3;
-
+function doExponental(lambda = 0.3) {
   const F = (x: number) => (x <= 0 ? 0 : 1 - Math.exp(-lambda * x));
 
   log(`Используем показательное распределение, lambda=${lambda}`);
