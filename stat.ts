@@ -80,4 +80,10 @@ assert(inv_standart_deviation(0.95), 1.645);
 assert(inv_standart_deviation(0.99), 2.326, 1);
 assert(inv_standart_deviation(0.999), 3.09, 1);
 
+console.info(`Self-testing standart_deviation...`);
+assert(std_cumulative_distribution(0), 0.5, 4);
+assert(std_cumulative_distribution(1.05), 0.8531, 4);
+assert(std_cumulative_distribution(0.59), 0.7224, 4);
+assert(std_cumulative_distribution(3.14), 0.9992, 4);
+
 console.info(`Self-test is done`);
