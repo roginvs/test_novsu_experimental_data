@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel *.html",
-    "build": "parcel build --out-dir=docs *.html"
+    "build": "parcel build --out-dir=docs --public-url=/test_novsu_experimental_data *.html"
   },
   "author": "",
   "license": "ISC",

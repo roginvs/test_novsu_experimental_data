@@ -25,4 +25,4 @@ const e=require("./invChiSquareCDF.js"),a=require("./invRegLowGamma.js"),m=requi
 },{"./lib":"kLTt","./stat":"xRVE"}],"TtBx":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0});var r=require("./lib"),a=require("./09lib");function e(e){var n=10,o=20,t=function(r){return r<n?0:r>o?1:(r-n)/10};e?r.log("Используем равномерное a=10 b=20 с искажениями"):r.log("Используем равномерное a=10 b=20");for(var i=0,l=[20,100];i<l.length;i++){var u=l[i],f=new Array(u).fill(0).map(function(){return 10*Math.random()+n});if(e)for(var v=0;v<u/5;v++)f[v]=15;a.doChiSquare(u,f,t)}r.log("")}function n(e){void 0===e&&(e=.3);var n=function(r){return r<=0?0:1-Math.exp(-e*r)};r.log("Используем показательное распределение, lambda="+e);for(var o=0,t=[20,100];o<t.length;o++){var i=t[o],l=new Array(i).fill(0).map(function(){var r=Math.random();return-1/e*Math.log(1-r)});a.doChiSquare(i,l,n)}r.log("")}for(var o=0,t=[!1,!0];o<t.length;o++){var i=t[o];e(i)}n();
 },{"./lib":"kLTt","./09lib":"eoOn"}]},{},["TtBx"], null)
-//# sourceMappingURL=/09.0ff09318.js.map
+//# sourceMappingURL=/test_novsu_experimental_data/09.0ff09318.js.map
