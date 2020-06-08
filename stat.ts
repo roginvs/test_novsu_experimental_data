@@ -1,6 +1,7 @@
 import * as jsstats from "js-stats";
 import { invChiSquareCDF } from "inv-chisquare-cdf";
 import { js_chi_square } from "./stat.chi_square";
+import { fdistr } from "./stat.statistics-distributions-001";
 
 export function std_cumulative_distribution(n: number): number {
   const normalDistribution = new jsstats.NormalDistribution(0, 1);
@@ -53,9 +54,11 @@ function assert(x1: number, x2: number, errDigits = 3) {
 
 export function fisher(df1: number, df2: number, value: number) {
   const f_distribution = new jsstats.FDistribution(df1, df2);
-
   const p = f_distribution.cumulativeProbability(value); // cumulative probability
   return p;
+}
+export function inv_fisher(df1: number, df2: number, probability = 0.05) {
+  return fdistr(df1, df2, probability) as number;
 }
 
 console.info(`Self-testing inv_chi_square...`);
@@ -93,5 +96,13 @@ assert(fisher(3, 5, 5.41), 1 - 0.05);
 assert(fisher(2, 12, 3.88), 1 - 0.05);
 assert(fisher(12, 13, 2.6), 1 - 0.05);
 assert(fisher(5, 150, 2.27), 1 - 0.05);
+
+console.info(`Self-testing inv_fisher...`);
+
+assert(inv_fisher(4, 7, 0.05), 4.12);
+assert(inv_fisher(3, 5, 0.05), 5.41, 2);
+assert(inv_fisher(2, 12, 0.05), 3.88);
+assert(inv_fisher(12, 13, 0.05), 2.6, 2);
+assert(inv_fisher(5, 150, 0.05), 2.27);
 
 console.info(`Self-test is done`);
