@@ -1,4 +1,6 @@
 // Downloaded from https://code.google.com/archive/p/statistics-distributions-js/downloads
+// Applied fix https://code.google.com/archive/p/statistics-distributions-js/issues/2
+
 /*
  * NAME
  *
@@ -164,7 +166,8 @@ function _subfprob($n: number, $m: number, $x: number) {
     for (var $i = $m - 2; $i >= 2; $i -= 2) {
       $a = 1 + (($n + $i - 2) / $i) * $z * $a;
     }
-    $p = 1 - Math.pow(1 - $z, ($n / 2) * $a);
+    // $p = 1 - Math.pow(1 - $z, ($n / 2) * $a);
+    $p = 1 - Math.pow(1 - $z, $n / 2) * $a;
   } else if ($n % 2 == 0) {
     var $z = ($n * $x) / ($m + $n * $x);
     var $a = 1;

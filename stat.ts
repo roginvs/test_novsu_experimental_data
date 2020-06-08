@@ -101,8 +101,8 @@ console.info(`Self-testing inv_fisher...`);
 
 assert(inv_fisher(4, 7, 0.05), 4.12);
 assert(inv_fisher(3, 5, 0.05), 5.41, 2);
-assert(inv_fisher(2, 12, 0.05), 3.88);
+assert(inv_fisher(2, 12, 0.05), 3.88, 1);
 assert(inv_fisher(12, 13, 0.05), 2.6, 2);
-assert(inv_fisher(5, 150, 0.05), 2.27);
+assert(inv_fisher(5, 150, 0.05), 2.27, 2);
 
 console.info(`Self-test is done`);
