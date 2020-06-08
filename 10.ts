@@ -42,19 +42,20 @@ function rDistribution(data: number[][]) {
 
   const S12 = Q1 / (r - 1);
   const S22 = Q2 / (n - r);
-  log(`S₁²=${S12.toFixed(2)}`;
+  log(`S₁²=${S12.toFixed(2)}`);
   log(`S₂²=${S22.toFixed(2)}`);
   const Z = S12 / S22;
   log(`Z = ${Z.toFixed(2)}`);
 
-  const p = fisher(r-1, n-r, Z);
-  log(`1-F(${r-1},${n-r},${Z.toFixed(2)})=${(1-p).toFixed(4)}`);
+  const p = fisher(r - 1, n - r, Z);
+  log(
+    `Достоверность = F(${r - 1}, ${n - r}, ${Z.toFixed(2)}) = ${p.toFixed(4)}`
+  );
 
-  
   for (const alpha of [0.1, 0.05, 0.01]) {
     log(`  α=${alpha} (${alpha * 100}%)`);
-    const fisherPercentile=inv_fisher(r-1, n-r, alpha);
-    if(fisherPercentile > Z) {  
+    const fisherPercentile = inv_fisher(r - 1, n - r, alpha);
+    if (fisherPercentile > Z) {
       log(`  Перцентиль=${fisherPercentile} > Z, гипотеза не отвергается`);
     } else {
       log(`  Перцентиль=${fisherPercentile} ≤ Z, гипотеза отвергается`);
@@ -68,9 +69,15 @@ const DIST_A = 50;
 const mySelections = [50, 80, 70].map((n) =>
   getNormalSet(n).map((x) => Math.round(x * DIST_SIGMA + DIST_A))
 );
-
+mySelections.push(
+  getNormalSet(60).map((x) => Math.round(x * DIST_SIGMA + DIST_A + 1))
+);
 
 // https://www.matburo.ru/Examples/Files/ms_da_1.pdf
-const sampleData = [[18, 28, 12,14,32],[24,36,28,40,16],[36,12,22,45,40]]
+const sampleData = [
+  [18, 28, 12, 14, 32],
+  [24, 36, 28, 40, 16],
+  [36, 12, 22, 45, 40],
+];
 
-rDistribution(sampleData);
+rDistribution(mySelections);
