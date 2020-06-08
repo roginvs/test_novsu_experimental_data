@@ -51,6 +51,13 @@ function assert(x1: number, x2: number, errDigits = 3) {
   }
 }
 
+export function fisher(df1: number, df2: number, value: number) {
+  const f_distribution = new jsstats.FDistribution(df1, df2);
+
+  const p = f_distribution.cumulativeProbability(value); // cumulative probability
+  return p;
+}
+
 console.info(`Self-testing inv_chi_square...`);
 assert(inv_chi_square(10, 0.95), 18.3, 1);
 assert(inv_chi_square(20, 0.3), 16.3, 1);
