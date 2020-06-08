@@ -3,6 +3,7 @@ import {
   inv_chi_square,
   std_cumulative_distribution,
   fisher,
+  inv_fisher,
 } from "./stat";
 import { log, getEstimateMean, getEstimateD, getNormalSet } from "./lib";
 
@@ -47,7 +48,18 @@ function rDistribution(data: number[][]) {
   log(`Z = ${Z.toFixed(2)}`);
 
   const p = fisher(r-1, n-r, Z);
-  log(`F(${r-1},${n-r},${Z.toFixed(2)})=${p.toFixed(4)}`)
+  log(`1-F(${r-1},${n-r},${Z.toFixed(2)})=${(1-p).toFixed(4)}`);
+
+  
+  for (const alpha of [0.1, 0.05, 0.01]) {
+    log(`  α=${alpha} (${alpha * 100}%)`);
+    const fisherPercentile=inv_fisher(r-1, n-r, alpha);
+    if(fisherPercentile > Z) {  
+      log(`  Перцентиль=${fisherPercentile} > Z, гипотеза не отвергается`);
+    } else {
+      log(`  Перцентиль=${fisherPercentile} ≤ Z, гипотеза отвергается`);
+    }
+  }
 }
 
 const DIST_SIGMA = 4;
