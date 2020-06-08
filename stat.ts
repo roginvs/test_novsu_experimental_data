@@ -88,4 +88,10 @@ assert(std_cumulative_distribution(1.05), 0.8531, 4);
 assert(std_cumulative_distribution(0.59), 0.7224, 4);
 assert(std_cumulative_distribution(3.14), 0.9992, 4);
 
+console.info(`Self-testing fisher...`);
+assert(fisher(3, 5, 5.41), 1 - 0.05);
+assert(fisher(2, 12, 3.88), 1 - 0.05);
+assert(fisher(12, 13, 2.6), 1 - 0.05);
+assert(fisher(5, 150, 2.27), 1 - 0.05);
+
 console.info(`Self-test is done`);
