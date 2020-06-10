@@ -78,3 +78,11 @@ for (const alpha of [0.1, 0.05, 0.01, 0.001, 0.0001]) {
     }`
   );
 }
+
+const add = 0; //M2 / M1;
+context.beginPath();
+
+const y = (x: number) => ((x - M1) / Math.sqrt(D1)) * corr * Math.sqrt(D2) + M2;
+context.moveTo(0, TOP - y(0));
+context.lineTo(xMax * X_SCALE, TOP - Y_SCALE * y(xMax));
+context.stroke();
