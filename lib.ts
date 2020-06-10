@@ -51,3 +51,11 @@ export function log(s: string) {
   line.innerHTML = s || nbsp;
   logDiv.appendChild(line);
 }
+
+export function summ(from: number, to: number, f: (n: number) => number) {
+  let s = 0;
+  for (let i = from; i <= to; i++) {
+    s += f(i);
+  }
+  return s;
+}

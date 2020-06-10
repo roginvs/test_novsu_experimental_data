@@ -21,6 +21,12 @@ export function inv_student(
   return t_df;
 }
 
+export function student(degreesOfFreedom: number, tValue: number): number {
+  const t_distribution = new jsstats.TDistribution(degreesOfFreedom);
+  const probability = t_distribution.cumulativeProbability(tValue);
+  return probability;
+}
+
 export function inv_chi_square(
   degreesOfFreedom: number,
   probabilty: number
@@ -78,6 +84,12 @@ assert(inv_student(10, 0.75), 0.7);
 assert(inv_student(10, 0.995), 3.169);
 assert(inv_student(20, 0.95), 1.725);
 assert(inv_student(15, 0.95), 1.753);
+
+console.info(`Self-testing student...`);
+assert(student(10, 0.7), 0.75);
+assert(student(10, 3.169), 0.995);
+assert(student(20, 1.725), 0.95);
+assert(student(15, 1.753), 0.95);
 
 console.info(`Self-testing inv_standart_deviation...`);
 assert(inv_standart_deviation(0.9), 1.282);
