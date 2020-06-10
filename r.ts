@@ -67,19 +67,20 @@ log(`Коэффициент корреляции = ${corr}`);
 
 const tValue = (corr * Math.sqrt(n - 2)) / Math.sqrt(1 - corr ** 2);
 
-log(`t=${tValue}`);
+log(`t_наблюдаемое=${tValue}`);
 // log(`Вероятность Стьюдента = ${student(n - 2, tValue)}`);
 for (const alpha of [0.1, 0.05, 0.01, 0.001, 0.0001]) {
   const tCrit = inv_student(n - 2, 1 - alpha / 2);
 
   log(
-    `  α=${alpha} tCrit = ${tCrit.toFixed(2)} ${
-      tValue > tCrit ? "достоверна" : "нет оснований для достоверности"
+    `  α=${alpha} t_граничное = ${tCrit.toFixed(2)} ${
+      Math.abs(tValue) > tCrit
+        ? "достоверна"
+        : "нет оснований для достоверности"
     }`
   );
 }
 
-const add = 0; //M2 / M1;
 context.beginPath();
 
 const y = (x: number) => ((x - M1) / Math.sqrt(D1)) * corr * Math.sqrt(D2) + M2;
